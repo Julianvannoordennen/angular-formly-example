@@ -1,0 +1,27 @@
+<mat-toolbar color="primary">
+  <span>Angular Formly</span>
+</mat-toolbar>
+
+<div style="padding: 25px; font-family: arial">
+  <mat-accordion [multi]="true">
+    <mat-expansion-panel [expanded]="true">
+      <mat-expansion-panel-header>
+        <mat-panel-title>Dier Formulier</mat-panel-title>
+        <mat-panel-description>Voeg hier een dier toe</mat-panel-description>
+      </mat-expansion-panel-header>
+      <form [formGroup]="animalForm" (ngSubmit)="onAnimalFormSubmit(animal)">
+        <formly-form [model]="animal" [fields]="animalFields" [form]="animalForm">
+          <button style="margin-top: 25px" mat-raised-button [disabled]="animalForm.invalid">Verstuur</button>
+        </formly-form>
+      </form>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>Dier Model</mat-panel-title>
+        <mat-panel-description>Bewonder hier het dier (In JSON)</mat-panel-description>
+      </mat-expansion-panel-header>
+      <pre>{{animal | json}}</pre>
+      <p>Invoer {{animalForm.valid ? 'correct' : 'foutief'}}</p>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
